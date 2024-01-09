@@ -3,6 +3,8 @@ using api.Mappers;
 using api.Models;
 using api.Repository;
 using api.Repository.Interfaces;
+using api.Services;
+using api.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +22,7 @@ builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(AppMapperProfile));
 builder.Services.AddTransient<IStockRepository, StockRepository>();
 builder.Services.AddTransient<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
